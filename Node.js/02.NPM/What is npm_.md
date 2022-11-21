@@ -11,8 +11,8 @@ It is basically a json file that includes some basic info about your application
 - authors
 - git repo address
 - dependency
-It is metadata about your application
-***All node apps have this file***, so before adding any packages added to our project we must have this file.
+    It is metadata about your application
+    ***All node apps have this file***, so before adding any packages added to our project we must have this file.
 
 ### Creating package.json
 
@@ -28,7 +28,7 @@ We run:
 `npm install <package name>` or `npm i ,`
 
 ***A good place to find and see how packages work is [the npmjs site](https://www.npmjs.com/).***
-When in stalling a packag for our project, that package is added to our dependency list in package.json
+When in stalling a package for our project, that package is added to our dependency list in package.json
 
 # Using A Package
 
@@ -56,7 +56,7 @@ we create a `.gitignore` file and simply add `node_modules/` to it. the / indica
 To see a list of all the installed dependencies and their exact version:
 `npm list`
 We will see a list of all the dependencies and their dependencies.
-To only see the dependencies we installedand not their individual dependencies:
+To only see the dependencies we installed and not their individual dependencies:
 `npm list --depth=0`
 
 ## Metadata about a library
@@ -81,7 +81,7 @@ To find out what packages have been updated to a newer version:
 `npm outdated`
 If there are any outdated packages the result will look like this:
 
-![8b25f2e746f8a14973d1f173deb20942.png](../../_resources/8b25f2e746f8a14973d1f173deb20942.png)
+![8b25f2e746f8a14973d1f173deb20942.png](../../_resources/8b25f2e746f8a14973d1f173deb20942-1.png)
 
 ## Note on `npm outdated`
 
@@ -99,7 +99,7 @@ To update dependencies to a major update, we need to install an npm tool *(Run t
 `npm i -g npm-check-updates`
 Now `npm-check-updates` is installed.
 
-![d1b9412fdc4f251881d6a3262070dcdf.png](../../_resources/d1b9412fdc4f251881d6a3262070dcdf.png)
+![d1b9412fdc4f251881d6a3262070dcdf.png](../../_resources/d1b9412fdc4f251881d6a3262070dcdf-1.png)
 
 The command `ncu -u` upgrades our package.json. Now after package.json is updated, running `npm install` automatically installs all dependencies listed in package.json.
 
@@ -117,17 +117,20 @@ Sometimes we use dependencies that are only used during development. Like tools 
 
 In order to specify that the package we are installing is a development dependency, we supply a flag:
 `npm i <package> --save-dev`
-In our package.json file, after installing a devdependency, it is listed under devDependencies:
+In our package.json file, after installing a devDependency, it is listed under devDependencies:
 
-![1a488027a8f26ed639399fc34e9f546b.png](../../_resources/1a488027a8f26ed639399fc34e9f546b.png)
+![1a488027a8f26ed639399fc34e9f546b.png](../../_resources/1a488027a8f26ed639399fc34e9f546b-1.png)
 
 *(after installing the jshint package)*
 
 # Uninstalling Packages
+
 To remove packages we use:
 `npm un <package>`
 This removes he package and is removes from the dependency list in package.json.
+
 # Global Packages
+
 There are node packages that are not specific to an application. These are often command-line tools that we want to access from a everywhere.
 an example of such packages is `npm`.
 To install a node package globally, we use the `-g` flag. All node commands so far will also work with global packages. for example if we want to see a list of all te outdated global packages we run the command:

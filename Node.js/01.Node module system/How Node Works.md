@@ -16,7 +16,7 @@ when a request arrives, the thread handles the request. if we have to query the 
 
 In ES6 / ES2015 we have a feature called template string which helps us build a string without concatenation.
 
-### we use \` instead of "
+### we use ` instead of "
 
 for example if we want a console log of a string with a value added we use the following syntax:
 `console.log(Total Memory: ${totalMemory});`
@@ -32,15 +32,15 @@ Even though we have synchronous methods we should avoid using them. These are th
 
 # Callback Functions
 
-All async methods take a function as their last arg. Node will call this function when that async operations completes. We call this function a **callback**.
+All async methods take a function as their last arg. Node will call this function when that async operation completes. We call this function a **callback**.
 
-![eefa0fb5e6f6f58b722aaac60bede2a8.png](../../_resources/eefa0fb5e6f6f58b722aaac60bede2a8.png)
+![4f868a6d94f55db293277fd514efcae3.png](../../_resources/4f868a6d94f55db293277fd514efcae3.png)
 
 Intellisense shows that the callback function for `fs.readdir()` function has two parameters. an error or the result.
-We need to check if we have an error or the result. 
+We need to check if we have an error or the result.
 ***Note: The important thing to know is, only one of the two parameters will have a value and the other will be null.***
 
-<img src="../../_resources/dfc0b67f0629d35b7693eaf7d541a29c.png" alt="dfc0b67f0629d35b7693eaf7d541a29c.png" width="333" height="86">
+![dcaab5dbb183480dc6913e02b3d5b34b.png](../../_resources/dcaab5dbb183480dc6913e02b3d5b34b.png)
 
 The example in the picture above is just to show the basic syntax.
 
@@ -52,7 +52,7 @@ A lot of Nodes' core functionality is based on this concept of events.
 
 It is a **signal** that indicates something has happened.
 
-### The [Docks](https://nodejs.dev/en/api/v18/events/) for Event module starts off explaining:
+### The [Docs](https://nodejs.dev/en/api/v18/events/) for Event module starts off explaining:
 
 Much of the Node.js core API is built around an idiomatic asynchronous event-driven architecture in which certain kinds of objects (called "emitters") emit named events that cause Function objects ("listeners") to be called.
 
@@ -111,7 +111,7 @@ When calling the `emit()` function, it iterates over all registered listeners an
 
 ## Using the Arrow function
 
-When registering the listener we usd the following syntax:
+When registering the listener we use the following syntax:
 
 ```javascript
 emitter.on('messageLogged', function(arg){
@@ -168,15 +168,15 @@ log.on('logging', (arg) => {
 log.log('message from log event');
 ```
 
-
 # HTTP Module
 
 We use this module to create networks in applications.
-We can create a web server that listens for HTTP requests on a given port. Using this we can easily create a backend service.
+We can create a web server that listens for HTTP requests on a given port. Using this we can easily create a back-end service.
 
 # Working With HTTP
 
 ## Responding to a 'connection' event
+
 1.  First we must load the module.
     `const http = require('http');`
     
@@ -195,29 +195,34 @@ server.on('connection', (socket) => {
 
 The arguments in this listener are predefined and are in the document.
 
-![d339d34a07d6647d6b9c079f2c512781.png](../../_resources/d339d34a07d6647d6b9c079f2c512781.png)
+![46073734cc15478f7f51d204e4a74c8b.png](../../_resources/46073734cc15478f7f51d204e4a74c8b.png)
 
 As show above this listener has "connection" as the name of the event and receives a socket object as arg.
 
-4. Then we raise an event using:
-`server.listern(3000);`
+4.  Then we raise an event using:
+    `server.listern(3000);`
 
-This method isvery low level and is not commonly used.
+This method is very low level and is not commonly used.
 
 ## A more common approach
+
 We can use a callback function when creating the server:
+
 ```javascript
 server = http.createServer( (req,res) => {
-	if(req.url === '/'){
-		res.write('Hello World');
-		res.end();
-	}
-	if(req.url === '/course'){
-		res.write( JSON.stringify( [1, 2, 3] ) );
-		res.end();
-	}
-	
+    if(req.url === '/'){
+        res.write('Hello World');
+        res.end();
+    }
+    if(req.url === '/course'){
+        res.write( JSON.stringify( [1, 2, 3] ) );
+        res.end();
+    }
+    
 } );
 
 ```
+
 Then we can remove the `.on()` function.
+
+***Note:*** Though this approach is perfectly fine, it's not ideal for building a complex application. Because in a large application we have various end-points and that means we will have a lot of if statements.
